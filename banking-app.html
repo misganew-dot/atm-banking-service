@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <title>Banking Service - Advanced</title>
+    <style>
+        body {
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .container {
+            background: white;
+            width: 480px;
+            padding: 25px;
+            box-shadow: 0 4px 15px gray;
+            border-radius: 12px;
+        }
+        .page { display: none; }
+        .active { display: block; }
+        
+        h2 { color: blue; text-align: center; border-bottom: 2px solid blue; padding-bottom: 10px; }
+        
+        .menu-box { display: flex; flex-direction: column; gap: 15px; }
+        
+        .link-btn {
+            background: green; color: white; padding: 15px;
+            text-decoration: none; border-radius: 8px; font-weight: bold;
+            cursor: pointer; text-align: center;
+        }
+        .link-btn:hover { opacity: 0.8; }
+        
+        .form-group { text-align: left; margin-bottom: 15px; }
+        label { font-size: 13px; font-weight: bold; color: dimgray; display: block; margin-bottom: 4px; }
+        
+        input {
+            width: 100%; padding: 12px; border: 1px solid silver;
+            border-radius: 5px; box-sizing: border-box;
+        }
+        input:invalid, .error { border-color: red !important; }
+        
+        .actions { margin-top: 20px; display: flex; gap: 10px; }
+        
+        .submit-btn { background: blue; color: white; border: none; padding: 12px; flex: 2; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .back-btn { background: gray; color: white; border: none; padding: 12px; flex: 1; border-radius: 5px; cursor: pointer; }
+        
+        #receipt {
+            background: honeydew; padding: 20px; border: 2px dashed green;
+            margin-top: 20px; display: none; color: black; border-radius: 8px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Main Menu -->
+        <div id="menu-page" class="page active">
+            <h2>Banking Service</h2>
+            <div class="menu-box">
+                <div class="link-btn" onclick="showPage('deposit-page')">Deposit Money</div>
+                <div class="link-btn" onclick="showPage('withdraw-page')" style="background: red;">Withdraw Money</div>
+                <div class="link-btn" onclick="showPage('transfer-page')" style="background: orange; color: black;">Transfer Money</div>
+            </div>
+        </div>
+
+        <!-- Deposit Page -->
+        <div id="deposit-page" class="page">
+            <h2>Deposit Form</h2>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="d-fname" required>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="d-lname" required>
+            </div>
+            <div class="form-group">
+                <label>Account Number (13 digits)</label>
+                <input type="text" id="d-acc" maxlength="13" required>
+            </div>
+            <div class="form-group">
+                <label>Amount (ETB)</label>
+                <input type="number" id="d-amt" min="1" max="5000000" required>
+            </div>
+            <div class="form-group">
+                <label>Signature</label>
+                <input type="text" id="d-sig" required>
+            </div>
+            <div class="actions">
+                <button class="back-btn" onclick="showPage('menu-page')">Back</button>
+                <button class="submit-btn" onclick="validateForm('deposit')">Submit Deposit</button>
+            </div>
+        </div>
+
+        <!-- Withdraw Page -->
+        <div id="withdraw-page" class="page">
+            <h2>Withdraw Form</h2>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="w-fname" required>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="w-lname" required>
+            </div>
+            <div class="form-group">
+                <label>Account Number (13 digits)</label>
+                <input type="text" id="w-acc" maxlength="13" required>
+            </div>
+            <div class="form-group">
+                <label>Amount (ETB)</label>
+                <input type="number" id="w-amt" min="1" max="5000000" required>
+            </div>
+            <div class="form-group">
+                <label>Signature</label>
+                <input type="text" id="w-sig" required>
+            </div>
+            <div class="actions">
+                <button class="back-btn" onclick="showPage('menu-page')">Back</button>
+                <button class="submit-btn" style="background: red;" onclick="validateForm('withdraw')">Submit Withdrawal</button>
+            </div>
+        </div>
+
+        <!-- Transfer Page -->
+        <div id="transfer-page" class="page">
+            <h2>Transfer Form</h2>
+            <!-- Sender -->
+            <div class="form-group">
+                <label>Sender First Name</label>
+                <input type="text" id="t-fname" required>
+            </div>
+            <div class="form-group">
+                <label>Sender Last Name</label>
+                <input type="text" id="t-lname" required>
+            </div>
+            <div class="form-group">
+                <label>Sender Account Number (13 digits)</label>
+                <input type="text" id="t-acc" maxlength="13" required>
+            </div>
+            
+            <!-- Receiver -->
+            <div class="form-group">
+                <label>Receiver First Name</label>
+                <input type="text" id="t-rfname" required>
+            </div>
+            <div class="form-group">
+                <label>Receiver Last Name</label>
+                <input type="text" id="t-rlname" required>
+            </div>
+            <div class="form-group">
+                <label>Receiver Account Number (13 digits)</label>
+                <input type="text" id="t-racc" maxlength="13" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Amount (ETB)</label>
+                <input type="number" id="t-amt" min="1" max="5000000" required>
+            </div>
+            <div class="actions">
+                <button class="back-btn" onclick="showPage('menu-page')">Back</button>
+                <button class="submit-btn" style="background: orange; color: black;" onclick="validateTransfer()">Submit Transfer</button>
+            </div>
+        </div>
+
+        <div id="receipt"></div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('receipt').style.display = 'none';
+        }
+
+        function isValidName(name) {
+            return /^[a-zA-Z\s]{2,}$/.test(name.trim());
+        }
+
+        function isValidAccount(acc) {
+            return /^\d{13}$/.test(acc.trim());
+        }
+
+        function validateForm(type) {
+            let prefix = type === 'deposit' ? 'd-' : 'w-';
+            let fname = document.getElementById(prefix + 'fname').value.trim();
+            let lname = document.getElementById(prefix + 'lname').value.trim();
+            let acc = document.getElementById(prefix + 'acc').value.trim();
+            let amt = parseFloat(document.getElementById(prefix + 'amt').value);
+            let sig = document.getElementById(prefix + 'sig').value.trim();
+
+            if (!isValidName(fname) || !isValidName(lname)) {
+                alert("First and Last names must be at least 2 letters each (letters and spaces only)!");
+                return;
+            }
+            if (!isValidAccount(acc)) {
+                alert("Account number must be exactly 13 digits!");
+                return;
+            }
+            if (!amt || amt <= 0 || amt > 5000000) {
+                alert("Amount must be between 1 and 5,000,000 ETB!");
+                return;
+            }
+            if (sig.length < 3) {
+                alert("Signature must be at least 3 characters!");
+                return;
+            }
+
+            const now = new Date().toLocaleString();
+            let receiptHTML = `
+                <b>Transaction Successful! ✅</b><br><br>
+                <strong>Type:</strong> ${type.toUpperCase()}<br>
+                <strong>Name:</strong> ${fname} ${lname}<br>
+                <strong>Account:</strong> ${acc}<br>
+                <strong>Amount:</strong> ${amt} ETB<br>
+                <strong>Signature:</strong> ${sig}<br>
+                <strong>Date:</strong> ${now}<br><br>
+                Thank you for using our banking service.
+            `;
+            document.getElementById('receipt').innerHTML = receiptHTML;
+            document.getElementById('receipt').style.display = 'block';
+        }
+
+        function validateTransfer() {
+            let fname = document.getElementById('t-fname').value.trim();
+            let lname = document.getElementById('t-lname').value.trim();
+            let acc = document.getElementById('t-acc').value.trim();
+            let rfname = document.getElementById('t-rfname').value.trim();
+            let rlname = document.getElementById('t-rlname').value.trim();
+            let racc = document.getElementById('t-racc').value.trim();
+            let amt = parseFloat(document.getElementById('t-amt').value);
+
+            if (!isValidName(fname) || !isValidName(lname)) {
+                alert("Sender First and Last names must be at least 2 letters each!");
+                return;
+            }
+            if (!isValidAccount(acc)) {
+                alert("Sender account number must be exactly 13 digits!");
+                return;
+            }
+            if (!isValidName(rfname) || !isValidName(rlname)) {
+                alert("Receiver First and Last names must be at least 2 letters each!");
+                return;
+            }
+            if (!isValidAccount(racc)) {
+                alert("Receiver account number must be exactly 13 digits!");
+                return;
+            }
+            if (!amt || amt <= 0 || amt > 5000000) {
+                alert("Amount must be between 1 and 5,000,000 ETB!");
+                return;
+            }
+
+            const now = new Date().toLocaleString();
+            let receiptHTML = `
+                <b>Transfer Successful! ✅</b><br><br>
+                <strong>Sender:</strong> ${fname} ${lname}<br>
+                <strong>Sender Account:</strong> ${acc}<br>
+                <strong>Receiver:</strong> ${rfname} ${rlname}<br>
+                <strong>Receiver Account:</strong> ${racc}<br>
+                <strong>Amount:</strong> ${amt} ETB<br>
+                <strong>Date:</strong> ${now}<br><br>
+                Transfer completed successfully.
+            `;
+            document.getElementById('receipt').innerHTML = receiptHTML;
+            document.getElementById('receipt').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
