@@ -1,0 +1,267 @@
+body {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container {
+    background: white;
+    width: 500px;
+    max-width: 100%;
+    padding: 25px;
+    box-shadow: 0 4px 15px gray;
+    border-radius: 12px;
+}
+
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+h2 {
+    color: navy;
+    text-align: center;
+    border-bottom: 2px solid navy;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.atm-badge {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: dimgray;
+    background: aliceblue;
+    padding: 5px 10px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 0 auto 14px auto;
+}
+
+.menu-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.link-btn {
+    background: green;
+    color: white;
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.link-btn:hover {
+    opacity: 0.88;
+}
+
+.reset-btn {
+    margin-top: 14px;
+    width: 100%;
+    background: whitesmoke;
+    color: dimgray;
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.reset-btn:hover {
+    background: gainsboro;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    color: dimgray;
+    display: block;
+    margin-bottom: 4px;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: navy;
+}
+
+.error {
+    border-color: red !important;
+}
+
+.quick-amounts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quick-btn {
+    background: aliceblue;
+    color: navy;
+    border: 1px solid lightsteelblue;
+    padding: 8px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.quick-btn:hover {
+    background: navy;
+    color: white;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.filter-bar input {
+    flex: 1;
+}
+
+.clear-filter-btn {
+    background: gainsboro;
+    color: darkslategray;
+    border: 1px solid silver;
+    padding: 0 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.clear-filter-btn:hover {
+    background: silver;
+}
+
+.actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+}
+
+.submit-btn {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 12px;
+    flex: 2;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-btn {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 12px;
+    flex: 1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#receipt {
+    background: honeydew;
+    padding: 18px;
+    border: 2px dashed green;
+    margin-top: 18px;
+    display: none;
+    color: black;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.list-box {
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tx-item {
+    border: 1px solid gainsboro;
+    border-left: 5px solid royalblue;
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: snow;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tx-deposit {
+    border-left-color: green;
+}
+
+.tx-withdraw {
+    border-left-color: red;
+}
+
+.tx-transfer {
+    border-left-color: orange;
+}
+
+.acc-item {
+    border: 1px solid lightsteelblue;
+    border-left: 5px solid navy;
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: aliceblue;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.acc-locked {
+    border-color: lightcoral;
+    border-left-color: red;
+    background: mistyrose;
+}
+
+.locked-badge {
+    display: inline-block;
+    background: red;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: gray;
+    padding: 20px 0;
+    font-size: 14px;
+}
