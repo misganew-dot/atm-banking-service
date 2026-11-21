@@ -19,7 +19,7 @@ git clone https://github.com/misganew-dot/atm-banking-service.git
 
 ## Live Demo
 
-🔗 [Try it here](https://misganew-dot.github.io/atm-banking-service/)
+🔗 [click me](https://misganew-dot.github.io/atm-banking-service/)
 
 ## Author
 
