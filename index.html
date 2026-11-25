@@ -6,14 +6,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-
         <!-- Main Menu -->
         <div id="menu-page" class="page active">
             <h2>ATM Banking Service</h2>
             <div class="atm-badge">24/7 Self-Service ATM Terminal</div>
-
             <div class="menu-box">
                 <div class="link-btn" onclick="showPage('deposit-page')">Deposit Money</div>
                 <div class="link-btn" onclick="showPage('withdraw-page')" style="background: red;">Withdraw Money</div>
@@ -24,7 +21,6 @@
 
             <button class="reset-btn" onclick="resetBankData()">Reset All Accounts & History</button>
         </div>
-
         <!-- Deposit Page -->
         <div id="deposit-page" class="page">
             <h2>ATM Deposit Form</h2>
@@ -63,7 +59,6 @@
                 <button class="submit-btn" onclick="validateForm('deposit')">Submit Deposit</button>
             </div>
         </div>
-
         <!-- Withdraw Page -->
         <div id="withdraw-page" class="page">
             <h2>ATM Withdraw Form</h2>
@@ -102,7 +97,6 @@
                 <button class="submit-btn" style="background: red;" onclick="validateForm('withdraw')">Submit Withdrawal</button>
             </div>
         </div>
-
         <!-- Transfer Page -->
         <div id="transfer-page" class="page">
             <h2>ATM Transfer Form</h2>
@@ -122,7 +116,6 @@
                 <label>Sender 4-Digit PIN</label>
                 <input type="password" id="t-pin" maxlength="4" placeholder="Enter 4-digit PIN" required>
             </div>
-
             <div class="form-group">
                 <label>Receiver First Name</label>
                 <input type="text" id="t-rfname" required>
@@ -135,7 +128,6 @@
                 <label>Receiver Account Number (13 digits)</label>
                 <input type="text" id="t-racc" maxlength="13" required>
             </div>
-
             <div class="form-group">
                 <label>Amount (ETB)</label>
                 <input type="number" id="t-amt" min="1" max="5000000" required>
@@ -151,7 +143,6 @@
                 <button class="submit-btn" style="background: orange; color: black;" onclick="validateTransfer()">Submit Transfer</button>
             </div>
         </div>
-
         <!-- Accounts Balance Page -->
         <div id="accounts-page" class="page">
             <h2>Account Balances</h2>
@@ -173,10 +164,8 @@
                 <button class="back-btn" onclick="showPage('menu-page')">Back to Menu</button>
             </div>
         </div>
-
         <div id="receipt"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
